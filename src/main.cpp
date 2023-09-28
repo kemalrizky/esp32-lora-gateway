@@ -2,10 +2,12 @@
 #include "LoRa\LoRaHandler.h"
 #include "MQTT\InternetHandler.h"
 #include "MQTT\MqttHandler.h"
+#include "OTA\OtaHandler.h"
 
 LoRaHandler loRaHandler;
 InternetHandler internetHandler;
 MqttHandler mqttHandler;
+OtaHandler otaHandler;
 
 
 void setup() {
@@ -16,6 +18,8 @@ void setup() {
 
   loRaHandler.connect();
   loRaHandler.receiveMode();
+
+  otaHandler.init();
   
 }
 
@@ -40,4 +44,6 @@ void loop() {
   if(mqttHandler.isConnected() && loRaHandler.receiveMsg(loRaHandler.parsePacket())) {
     mqttHandler.publish(loRaHandler.getTopic(), loRaHandler.getMessage());
   }
+
+  otaHandler.handleReq();
 }
