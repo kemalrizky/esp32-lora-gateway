@@ -1,0 +1,3 @@
+#define PIN_LORA_SS 15
+#define PIN_LORA_RST 16
+#define PIN_LORA_DIO0 18
