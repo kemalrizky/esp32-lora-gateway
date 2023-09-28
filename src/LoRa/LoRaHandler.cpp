@@ -78,4 +78,5 @@ String LoRaHandler::getTopic() {
     }
 
     String _topic = "IoTDevices/" + _device;
+    return _topic;
 }
